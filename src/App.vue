@@ -3,7 +3,9 @@
     <v-app-bar title="My Movie Ratings"></v-app-bar>
 
     <v-navigation-drawer>      
-      <v-list :items="items"></v-list>
+      <v-list>
+        <v-list-item v-for="(item, index) in items" :key="index" @click="router.push(item.value)" :title="item.title"></v-list-item>
+      </v-list>
     </v-navigation-drawer>
 
     <v-main class="d-flex align-center justify-center" style="min-height: 300px;">
@@ -13,14 +15,15 @@
 </template>
 
 <script setup> 
+import router from './router';
   const items = [
     {
       title: 'Rate movies',
-      value: 1,
+      value: '/',
     },
     {
       title: 'Add movie',
-      value: 2,
+      value: '/add',
     }
   ]   
 </script>
